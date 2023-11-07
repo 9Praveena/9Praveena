@@ -1,0 +1,100 @@
+activity_main.xml:
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingBottom="@dimen/activity_vertical_margin" android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingTop="@dimen/activity_vertical_margin" tools:context="com.example.ex_no_1.MainActivity" >
+
+<TextView
+android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:layout_marginTop="53dp" android:text="MAD Lab"
+android:textAppearance="?android:attr/textAppearanceLarge" tools:ignore="HardcodedText" />
+
+<Button
+android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true"android:layout_alignParentRight="true" android:layout_below="@+id/textView1" android:layout_marginTop="64dp" android:text="Change Font Size" tools:ignore="HardcodedText" />
+
+<Button
+android:id="@+id/button2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_below="@+id/button1" android:text="Change Font Color" tools:ignore="HardcodedText" />
+
+<Button
+android:id="@+id/button3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_below="@+id/button2" android:text="Change Font Style" tools:ignore="HardcodedText" />
+
+</RelativeLayout>
+
+
+
+MainActivity.java:
+package com.example.ex_no_1;
+import android.support.v7.app.ActionBarActivity;
+import android.graphics.Color; import android.graphics.Typeface; import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+public class MainActivity extends ActionBarActivity {
+float font = 20; int count = 1; Button b1,b2,b3; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
+final TextView t1 = (TextView) findViewById(R.id.textView1); t1.setTextSize(15);
+b1 = (Button) findViewById(R.id.button1); b1.setOnClickListener(new OnClickListener() {
+public void onClick(View view) { t1.setTextSize(font); font = font + 5;
+if (font == 50)
+2
+
+
+font = 20;
+}
+});
+b2 = (Button) findViewById(R.id.button2); b2.setOnClickListener(new View.OnClickListener() {
+public void onClick(View view) {
+switch (count) {
+case 1:
+t1.setTextColor(Color.parseColor("#7f00ff"));
+break; case 2:
+t1.setTextColor(Color.parseColor("#00FF00"));
+break; case 3:
+t1.setTextColor(Color.parseColor("#FF0000"));
+break; case 4:
+t1.setTextColor(Color.parseColor("#0000FF"));
+break;
+
+
+
+
+
+}
+});
+}
+count++;
+if (count == 5)
+count = 1;
+
+b3 = (Button) findViewById(R.id.button3); b3.setOnClickListener(new OnClickListener() {
+@Override
+public void onClick(View view) {
+switch (count) {
+case 1:
+t1.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
+break; case 2:
+t1.setTypeface(Typeface.MONOSPACE, Typeface.NORMAL);
+break; case 3:
+t1.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
+break; case 4:
+t1.setTypeface(Typeface.SERIF, Typeface.BOLD_ITALIC);
+break;
+
+
+
+
+
+}
+});
+}
+}
+}
+count++;
+if (count == 5)
+count = 1;
+
+
+
+
+
+
+
+
+3
